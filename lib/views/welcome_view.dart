@@ -14,15 +14,18 @@ class WelcomeView extends StatefulWidget {
 
 class _WelcomeViewState extends State<WelcomeView> {
   Timer? _timer;
+  bool _isLeaving = false;
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer(const Duration(milliseconds: 1500), _openSignIn);
+    _timer = Timer(const Duration(seconds: 2), _openSignIn);
   }
 
   void _openSignIn() {
-    if (!mounted) return;
+    if (!mounted || _isLeaving) return;
+    _isLeaving = true;
+    _timer?.cancel();
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
