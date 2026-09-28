@@ -25,11 +25,11 @@ class _CoursesViewState extends State<CoursesView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Olá, estudante!',
+              'Hello, learner!',
               style: TextStyle(fontSize: 14, color: Color(0xFFDCD9F5)),
             ),
             SizedBox(height: 3),
-            Text('Stellar School'),
+            Text('Fluently'),
           ],
         ),
         actions: const [
@@ -84,12 +84,12 @@ class _CourseList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Minhas matérias',
+                      'My courses',
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'Continue de onde parou ou explore uma nova aula.',
+                      'Continue where you left off or explore a new lesson.',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],

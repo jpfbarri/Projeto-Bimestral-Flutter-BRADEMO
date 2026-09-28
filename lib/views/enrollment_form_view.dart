@@ -41,16 +41,16 @@ class _EnrollmentFormViewState extends State<EnrollmentFormView> {
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
 
-    debugPrint('Inscrição Stellar School');
-    debugPrint('Nome: ${_nameController.text.trim()}');
+    debugPrint('Fluently course enrollment');
+    debugPrint('Name: ${_nameController.text.trim()}');
     debugPrint('E-mail: ${_emailController.text.trim()}');
-    debugPrint('Matrícula: ${_studentIdController.text.trim()}');
-    debugPrint('Curso: ${_course!.title}');
+    debugPrint('Student ID: ${_studentIdController.text.trim()}');
+    debugPrint('Course: ${_course!.title}');
 
     FocusScope.of(context).unfocus();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Inscrição em ${_course!.title} enviada com sucesso!'),
+        content: Text('Enrollment in ${_course!.title} submitted!'),
         backgroundColor: AppColors.violet,
         behavior: SnackBarBehavior.floating,
       ),
@@ -85,26 +85,26 @@ class _EnrollmentFormViewState extends State<EnrollmentFormView> {
                   ),
                   const SizedBox(height: 18),
                   Text(
-                    'Inscrição no curso',
+                    'Course enrollment',
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Preencha seus dados para registrar o interesse na matéria escolhida.',
+                    'Complete your details to enroll in the selected course.',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(height: 26),
                   _FieldLabel(
-                    label: 'Nome completo',
+                    label: 'Full name',
                     child: TextFormField(
                       controller: _nameController,
                       textCapitalization: TextCapitalization.words,
                       decoration: const InputDecoration(
-                        hintText: 'Digite seu nome',
+                        hintText: 'Enter your name',
                       ),
                       validator: (value) {
                         if (value == null || value.trim().length < 3) {
-                          return 'Informe seu nome completo.';
+                          return 'Enter your full name.';
                         }
                         return null;
                       },
@@ -121,14 +121,14 @@ class _EnrollmentFormViewState extends State<EnrollmentFormView> {
                       validator: (value) {
                         final email = value?.trim() ?? '';
                         if (!email.contains('@') || !email.contains('.')) {
-                          return 'Informe um e-mail válido.';
+                          return 'Enter a valid e-mail.';
                         }
                         return null;
                       },
                     ),
                   ),
                   _FieldLabel(
-                    label: 'Número de matrícula',
+                    label: 'Student ID',
                     child: TextFormField(
                       controller: _studentIdController,
                       keyboardType: TextInputType.number,
@@ -137,18 +137,18 @@ class _EnrollmentFormViewState extends State<EnrollmentFormView> {
                       ),
                       validator: (value) {
                         if (value == null || value.trim().length < 5) {
-                          return 'Informe uma matrícula válida.';
+                          return 'Enter a valid student ID.';
                         }
                         return null;
                       },
                     ),
                   ),
                   _FieldLabel(
-                    label: 'Curso desejado',
+                    label: 'Selected course',
                     child: DropdownButtonFormField<Course>(
                       initialValue: _course,
                       isExpanded: true,
-                      hint: const Text('Selecione uma matéria'),
+                      hint: const Text('Select a course'),
                       items: courses
                           .map(
                             (course) => DropdownMenuItem(
@@ -159,14 +159,14 @@ class _EnrollmentFormViewState extends State<EnrollmentFormView> {
                           .toList(),
                       onChanged: (course) => setState(() => _course = course),
                       validator: (value) =>
-                          value == null ? 'Selecione uma matéria.' : null,
+                          value == null ? 'Select a course.' : null,
                     ),
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton.icon(
                     onPressed: _submit,
                     icon: const Icon(Icons.send_outlined),
-                    label: const Text('Enviar inscrição'),
+                    label: const Text('Submit enrollment'),
                   ),
                 ],
               ),
@@ -178,7 +178,7 @@ class _EnrollmentFormViewState extends State<EnrollmentFormView> {
 
     if (widget.embedded) return content;
     return Scaffold(
-      appBar: AppBar(title: const Text('Inscrição')),
+      appBar: AppBar(title: const Text('Enrollment')),
       body: content,
     );
   }

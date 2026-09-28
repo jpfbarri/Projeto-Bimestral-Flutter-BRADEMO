@@ -72,7 +72,7 @@ class CourseDetailView extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      'Sobre o curso',
+                      'About this course',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 8),
@@ -96,7 +96,7 @@ class CourseDetailView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Professor responsável',
+                              'Course tutor',
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                             Text(
@@ -111,7 +111,7 @@ class CourseDetailView extends StatelessWidget {
                     ),
                     const SizedBox(height: 26),
                     Text(
-                      'Módulos',
+                      'Modules',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 10),
@@ -130,7 +130,7 @@ class CourseDetailView extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text('Inscrever-se neste curso'),
+                      child: const Text('Enroll in this course'),
                     ),
                   ],
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import 'courses_view.dart';
 import 'dashboard_view.dart';
 import 'feature_views.dart';
 import 'homework_view.dart';
@@ -13,20 +14,17 @@ class MenuView extends StatelessWidget {
   Widget build(BuildContext context) {
     const items = <_MenuItem>[
       _MenuItem('Dashboard', Icons.home_outlined, DashboardView()),
+      _MenuItem('Courses', Icons.menu_book_outlined, CoursesView()),
       _MenuItem('Homework', Icons.task_alt_outlined, HomeworkView()),
-      _MenuItem('Attendance', Icons.calendar_month_outlined,
-          StudyAttendanceView()),
       _MenuItem(
-          'Subscription', Icons.credit_card_outlined, SubscriptionView()),
+          'Attendance', Icons.calendar_month_outlined, StudyAttendanceView()),
+      _MenuItem('Subscription', Icons.credit_card_outlined, SubscriptionView()),
       _MenuItem('Assessments', Icons.quiz_outlined, ExaminationsView()),
-      _MenuItem(
-          'Reports', Icons.assessment_outlined, ProgressReportView()),
+      _MenuItem('Reports', Icons.assessment_outlined, ProgressReportView()),
       _MenuItem('Calendar', Icons.event_outlined, CalendarView()),
       _MenuItem('Notice Board', Icons.campaign_outlined, NoticesView()),
-      _MenuItem(
-          'Multimedia', Icons.ondemand_video_outlined, MultimediaView()),
-      _MenuItem(
-          'Learning Path', Icons.route_outlined, LearningPathView()),
+      _MenuItem('Multimedia', Icons.ondemand_video_outlined, MultimediaView()),
+      _MenuItem('Learning Path', Icons.route_outlined, LearningPathView()),
       _MenuItem('Profile', Icons.person_outline, ProfileView()),
     ];
     return Scaffold(
@@ -65,40 +63,50 @@ class MenuView extends StatelessWidget {
               ),
               const SizedBox(height: 42),
               Expanded(
-                child: GridView.builder(
-                  itemCount: items.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 0.92,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 20,
-                  ),
-                  itemBuilder: (context, index) {
-                    final item = items[index];
-                    return InkWell(
-                      borderRadius: BorderRadius.circular(55),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => item.page),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final columns = constraints.maxWidth >= 700 ? 5 : 3;
+                    return GridView.builder(
+                      itemCount: items.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: columns,
+                        childAspectRatio: 0.92,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 20,
                       ),
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Colors.white,
-                            child: Icon(item.icon,
-                                color: AppColors.violet, size: 38),
+                      itemBuilder: (context, index) {
+                        final item = items[index];
+                        return InkWell(
+                          borderRadius: BorderRadius.circular(55),
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (_) => item.page),
                           ),
-                          const SizedBox(height: 8),
-                          Text(
-                            item.label,
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 14),
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundColor: Colors.white,
+                                child: Icon(
+                                  item.icon,
+                                  color: AppColors.violet,
+                                  size: 38,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                item.label,
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     );
                   },
                 ),

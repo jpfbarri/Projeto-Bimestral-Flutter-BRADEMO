@@ -13,7 +13,9 @@ O projeto contém o fluxo completo do kit: splash, três onboardings, login,
 recuperação de senha, OTP vazio e preenchido, nova senha, dashboard, menu,
 homework, calendário, assinatura e pagamento expandido, multimídia,
 avaliações, execução de prova, avisos, perfil, trilha de aprendizagem,
-frequência mensal, relatório de progresso e cartão detalhado.
+frequência mensal, relatório de progresso e cartão detalhado. O menu também
+dá acesso ao fluxo exigido pela avaliação: lista de cursos, detalhes do item
+selecionado e formulário de inscrição com validação.
 
 Os conceitos escolares foram mapeados para o Fluently sem alterar a linguagem
 visual: mensalidades viraram assinatura, presença virou consistência de estudo,
@@ -40,9 +42,12 @@ lib/
 ├── theme/app_theme.dart
 ├── views/
 │   ├── welcome_view.dart
+│   ├── dashboard_view.dart
+│   ├── menu_view.dart
 │   ├── courses_view.dart
 │   ├── course_detail_view.dart
-│   └── enrollment_form_view.dart
+│   ├── enrollment_form_view.dart
+│   └── demais telas do kit
 └── widgets/
     ├── course_card.dart
     └── stellar_brand.dart
