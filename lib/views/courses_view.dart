@@ -53,12 +53,12 @@ class _CoursesViewState extends State<CoursesView> {
           NavigationDestination(
             icon: Icon(Icons.grid_view_outlined),
             selectedIcon: Icon(Icons.grid_view),
-            label: 'Cursos',
+            label: 'Courses',
           ),
           NavigationDestination(
             icon: Icon(Icons.assignment_outlined),
             selectedIcon: Icon(Icons.assignment),
-            label: 'Inscrição',
+            label: 'Enrollment',
           ),
         ],
       ),

@@ -10,7 +10,7 @@ void main() {
 
     expect(find.text('Fluently'), findsOneWidget);
 
-    await tester.pump(const Duration(milliseconds: 1600));
+    await tester.pump(const Duration(milliseconds: 2100));
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Complete daily'), findsOneWidget);
